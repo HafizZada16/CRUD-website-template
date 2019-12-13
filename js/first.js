@@ -23,7 +23,7 @@ var initData = '{"image":"images/2.jpg","name":"aaa","category":"aaa","price":"0
 //console.log((JSON.parse(localStorage.getItem("productData")).length));
 
 if (localStorage.getItem("productData") == null || (JSON.parse(localStorage.getItem("productData")).length) == 0 ) {
-    var temp = `<div id="productImg" src="/images/" alt=" " class="img-fluid"></div>`;
+    var temp = `<img id="productImg" src="/images/" alt=" " class="img-fluid">`;
     document.getElementById("productsRow").innerHTML = temp;
     productsContainer = [];
 }
