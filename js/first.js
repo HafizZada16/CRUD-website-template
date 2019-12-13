@@ -22,7 +22,7 @@ var initData = '{"image":"images/2.jpg","name":"aaa","category":"aaa","price":"0
 // localStorage.setItem("productData", JSON.stringify(productsContainer));
 
 if (localStorage.getItem("productData") == null) {
-    var temp = `<img id="productImg" src="/images/" alt="" class="img-fluid">`;
+    var temp = `<img id="productImg" src="/images/" alt=" " class="img-fluid">`;
     document.getElementById("productsRow").innerHTML = temp;
     productsContainer = [];
 }
@@ -179,7 +179,7 @@ function deleteProduct(indx) {
     var deleted = productsContainer.splice(indx, 1);
     localStorage.setItem("productData", JSON.stringify(productsContainer));
     if (productsContainer.length == 0) {
-        var temp = `<img id="productImg" src="/images/" alt="" class="img-fluid">`;
+        var temp = `<img id="productImg" src="/images/" alt=" " class="img-fluid">`;
         document.getElementById("productsRow").innerHTML = temp;
         //console.log(productsContainer.length);
     }
