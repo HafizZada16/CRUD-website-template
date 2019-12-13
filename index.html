@@ -1,0 +1,106 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/index_style.css">
+
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 
+    <div class="container py-3">
+        <div class="form-group">
+            <label > mail</label>
+            <input type="text" class="form-control" id="mailin">
+        </div>
+        <div class="form-group">
+            <label > username</label>
+            <input type="text" class="form-control" id="userin">
+        </div>
+        <div class="form-group">
+            <label >domain</label>
+            <input type="text" class="form-control" id="domainin">
+        </div>
+        <button onclick="check()" class="btn btn-info">check mail</button>
+    </div> -->
+
+    <div class="container">
+        <div class="form-group">
+            <label for="">Set Image</label>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile04"
+                    aria-describedby="inputGroupFileAddon04">
+                <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="">Product Name</label>
+            <input type="text" class="form-control" id="nameInp">
+            <small class="text-muted"> Must be 3-20 characters long.</small>
+        </div>
+        <div class="form-group">
+            <label for="">Product Category</label>
+            <input type="text" class="form-control" id="categoryInp">
+            <small class="text-muted"> Must be 3-10 characters long.</small>
+        </div>
+        <div class="form-group">
+            <label for="">Product Price</label>
+            <input type="text" class="form-control" id="priceInp">
+            <small class="text-muted"> Must be 1-6 numbers long.</small>
+        </div>
+        <div class="form-group">
+            <label for="">Product Description</label>
+            <textarea type="text" class="form-control" id="descInp"></textarea>
+            <small class="text-muted"> Must be 3-100 characters long.</small>
+        </div>
+
+        <div class="form-group">
+            <h4>Sale?</h4>
+            <label for="">Yes</label>
+            <input type="radio" name="onSale" value="sale>">
+            <label for="">No</label>
+            <input type="radio" name="onSale" value="noSale">
+        </div>
+
+        <button onclick="addProduct()" class="btn btn-info float-right ">Add</button>
+        <!-- float-right -->
+        <div class="clearfix"></div>
+    </div>
+
+
+
+    <div class="container-fluid py-3">
+        <h2 class="text-center mb-4">Our Products</h2>
+        <input onkeyup="searchProducts(this.value)" placeholder="Search by product name..."
+            class="form-control w-50 m-auto">
+
+        <div class="row mt-5" id="productsRow">
+            <!-- added code of products by JS -->
+        </div>
+    </div>
+
+    <!-- <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+    <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+    <p><img id="output" width="200" /></p>
+    
+    <script>
+    var loadFile = function(event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    </script> -->
+
+
+
+    <script src="js/first.js"></script>
+
+</body>
+
+</html>
