@@ -15,7 +15,15 @@ var inputs = document.getElementsByClassName("form-control");
 
 var productsContainer;
 
+var initData = '{"image":"images/2.jpg","name":"aaa","category":"aaa","price":"0","desc":"aaa","sale":true}';
+// console.log(initData);
+// productsContainer = JSON.parse(initData);
+// console.log(productsContainer);
+// localStorage.setItem("productData", JSON.stringify(productsContainer));
+
 if (localStorage.getItem("productData") == null) {
+    var temp = `<img id="productImg" src="/images/" alt="" class="img-fluid">`;
+    document.getElementById("productsRow").innerHTML = temp;
     productsContainer = [];
 }
 else {
@@ -24,7 +32,7 @@ else {
 }
 
 function validateName(inputValue) {
-    var nameRegex = /^[a-zA-Z][a-zA-z0-9]{2,20}$/;
+    var nameRegex = /^[a-zA-Z][a-zA-z0-9-,._]{2,20}$/;
     if (nameRegex.test(inputValue) == false) {
         return false;
     }
@@ -54,7 +62,7 @@ function validatePrice(inputValue) {
 }
 
 function validateDesc(inputValue) {
-    var descRegex = /^[a-zA-Z0-9]{3,100}$/;
+    var descRegex = /^[a-zA-Z0-9-_,.]{3,100}$/;
     if (descRegex.test(inputValue) == false) {
         return false;
     }
@@ -70,8 +78,9 @@ function clearForm() {
 }
 function addProduct() {
     var prodImg = document.getElementById("inputGroupFile04").value;
-    prodImg = prodImg.slice(12);
-    var productImage= document.getElementById('productImg').src = 'images/'+prodImg+'';
+    slashIndx = prodImg.lastIndexOf("\\");
+    prodImg = prodImg.slice(slashIndx + 1);
+    var productImage = document.getElementById('productImg').src = 'images/' + prodImg + '';
     var productName = document.getElementById("nameInp").value;
     var productCategory = document.getElementById("categoryInp").value;
     var productPrice = document.getElementById("priceInp").value;
@@ -114,7 +123,7 @@ function displayProducts() {
         temp += ` <div class="col-md-3">
             <div class="product mb-4">
             <div class="controlProduct"> 
-            <img id="productImg" src="`+productsContainer[i].image+`" alt="img" class="img-fluid">
+            <img id="productImg" src="`+ productsContainer[i].image + `" alt="img" class="img-fluid">
             <div class="controlLayer d-flex justify-content-center align-items-center">
             <button onclick="deleteProduct(`+ i + `)" class="btn btn-outline-danger btn-sm">DELETE</button>
             <button onclick="updateProduct(`+ i + `)" class="btn btn-outline-warning btn-sm">UPDATE</button>
@@ -131,7 +140,7 @@ function displayProducts() {
         }
 
         temp += `</div> </div>`
-        
+
     }
 
     document.getElementById("productsRow").innerHTML = temp;
@@ -145,7 +154,7 @@ function searchProducts(term) {
             temp += ` <div class="col-md-3">
             <div class="product mb-4">
             <div class="controlProduct"> 
-            <img id="productImg" src="`+productsContainer[i].image+`" alt="img" class="img-fluid">
+            <img id="productImg" src="`+ productsContainer[i].image + `" alt="img" class="img-fluid">
             <div class="controlLayer d-flex justify-content-center align-items-center">
             <button onclick="deleteProduct(`+ i + `)" class="btn btn-outline-danger btn-sm">DELETE</button>
             <button onclick="updateProduct(`+ i + `)" class="btn btn-outline-warning btn-sm">UPDATE</button>
@@ -169,13 +178,22 @@ function deleteProduct(indx) {
     //console.log(indx);
     var deleted = productsContainer.splice(indx, 1);
     localStorage.setItem("productData", JSON.stringify(productsContainer));
-    displayProducts();
+    if (productsContainer.length == 0) {
+        var temp = `<img id="productImg" src="/images/" alt="" class="img-fluid">`;
+        document.getElementById("productsRow").innerHTML = temp;
+        //console.log(productsContainer.length);
+    }
+    else {
+        displayProducts();
+    }
+
 }
 
 function updateProduct(indx) {
     var prodImg = document.getElementById("inputGroupFile04").value;
-    prodImg = prodImg.slice(12);
-    var productImage= document.getElementById('productImg').src = 'images/'+prodImg+'';
+    slashIndx = prodImg.lastIndexOf("\\");
+    prodImg = prodImg.slice(slashIndx + 1);
+    var productImage = document.getElementById('productImg').src = 'images/' + prodImg + '';
     var productName = document.getElementById("nameInp").value;
     var productCategory = document.getElementById("categoryInp").value;
     var productPrice = document.getElementById("priceInp").value;
@@ -195,14 +213,20 @@ function updateProduct(indx) {
         displayProducts();
         clearForm();
     }
-    else
-    {
+    else {
         window.alert("Not Valid Input");
     }
 }
 
 
 
+// var prodImg = document.getElementById("inputGroupFile04").value;
+//     slashIndx = prodImg.lastIndexOf("\\");
+//     prodImg = prodImg.slice(slashIndx+1);
+//     console.log(prodImg);
+//     console.log(slashIndx);
 
 
 
+// var arr = [];
+// console.log(arr.length);
