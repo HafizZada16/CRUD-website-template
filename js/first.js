@@ -69,8 +69,9 @@ function clearForm() {
     }
 }
 function addProduct() {
-    var productImage = document.getElementById("inputGroupFile04").value;
-    productImage = productImage.slice(12);
+    var prodImg = document.getElementById("inputGroupFile04").value;
+    prodImg = prodImg.slice(12);
+    var productImage= document.getElementById('productImg').src = 'images/'+prodImg+'';
     var productName = document.getElementById("nameInp").value;
     var productCategory = document.getElementById("categoryInp").value;
     var productPrice = document.getElementById("priceInp").value;
@@ -110,14 +111,10 @@ function displayProducts() {
 
     for (var i = 0; i < productsContainer.length; i++) {
 
-        //if (productsContainer[i].name == '' || productsContainer[i].desc == '' || productsContainer[i].price == '') {
-        //  window.alert("please enter a value")
-        //  }
-        //else {
         temp += ` <div class="col-md-3">
             <div class="product mb-4">
             <div class="controlProduct"> 
-            <img id="productImg" src="images/1.jpg" alt="img" class="img-fluid">
+            <img id="productImg" src="`+productsContainer[i].image+`" alt="img" class="img-fluid">
             <div class="controlLayer d-flex justify-content-center align-items-center">
             <button onclick="deleteProduct(`+ i + `)" class="btn btn-outline-danger btn-sm">DELETE</button>
             <button onclick="updateProduct(`+ i + `)" class="btn btn-outline-warning btn-sm">UPDATE</button>
@@ -134,7 +131,7 @@ function displayProducts() {
         }
 
         temp += `</div> </div>`
-        //  }
+        
     }
 
     document.getElementById("productsRow").innerHTML = temp;
@@ -148,7 +145,7 @@ function searchProducts(term) {
             temp += ` <div class="col-md-3">
             <div class="product mb-4">
             <div class="controlProduct"> 
-            <img src="images/1.jpg" alt="img" class="img-fluid">
+            <img id="productImg" src="`+productsContainer[i].image+`" alt="img" class="img-fluid">
             <div class="controlLayer d-flex justify-content-center align-items-center">
             <button onclick="deleteProduct(`+ i + `)" class="btn btn-outline-danger btn-sm">DELETE</button>
             <button onclick="updateProduct(`+ i + `)" class="btn btn-outline-warning btn-sm">UPDATE</button>
@@ -176,12 +173,16 @@ function deleteProduct(indx) {
 }
 
 function updateProduct(indx) {
+    var prodImg = document.getElementById("inputGroupFile04").value;
+    prodImg = prodImg.slice(12);
+    var productImage= document.getElementById('productImg').src = 'images/'+prodImg+'';
     var productName = document.getElementById("nameInp").value;
     var productCategory = document.getElementById("categoryInp").value;
     var productPrice = document.getElementById("priceInp").value;
     var productDesc = document.getElementById("descInp").value;
     //var productSale = false;
     if (validateName(productName) == true && validateCategory(productCategory) == true && validatePrice(productPrice) == true && validateDesc(productDesc) == true) {
+        productsContainer[indx].image = productImage;
         productsContainer[indx].name = productName;
         productsContainer[indx].category = productCategory;
         productsContainer[indx].price = productPrice;
