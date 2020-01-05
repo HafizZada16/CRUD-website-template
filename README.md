@@ -2,7 +2,7 @@
 <img  src = /images/crud.png>
 
 # CRUD Website Template
-- CRUD(Create, Retrieve, Update, Delete) Website Template used for products for example.
+CRUD(Create, Retrieve, Update, Delete) Website Template used for products for example.
 - Using browser local storage to save data on your local browser so you can find any time you enter.
 - To add new product fill its info in the format then "Add Product".
 - Add image to the item.
