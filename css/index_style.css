@@ -5,6 +5,19 @@
 
 }
 
+body{
+    background-color: whitesmoke;
+    background-image: url("/images/bg.jpg");
+    background-size: cover;
+}
+
+.bg {
+   background-color: white;
+   border: #d7bde2   solid 5px ;
+   border-radius: 10px;
+   padding: 15px;
+  }
+
 .product
 {
     position: relative;
@@ -32,13 +45,13 @@
 .controlProduct
 {
     position: relative;
-    overflow: hidden;
+    overflow: hidden;    
 }
 
 .controlProduct img
 {
     width: 100%;
-    height: 60%; 
+    height: 300px;
 }
 
 .controlLayer
@@ -55,4 +68,9 @@
 .controlProduct:hover .controlLayer
 {
     left: 0;
+}
+
+.ourProdh2
+{
+    color: purple;
 }
