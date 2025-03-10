@@ -19,3 +19,4 @@ Click [here](https://isalma.github.io/CRUD-website-template/index.html) to go to
 - Bootstrap4
 - Java Script
 - Local Storage
+
